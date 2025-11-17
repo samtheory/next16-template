@@ -6,12 +6,10 @@ import { useAuthStore } from "../stores/auth-store";
 
 export function useAuthGuard(redirectTo = "/login") {
   const router = useRouter();
-  const { token, status, hasHydrated, hydrate } = useAuthStore((state) => ({
-    token: state.token,
-    status: state.status,
-    hasHydrated: state.hasHydrated,
-    hydrate: state.hydrate
-  }));
+   const token       = useAuthStore((state) => state.token);
+  const status      = useAuthStore((state) => state.status);
+  const hasHydrated = useAuthStore((state) => state.hasHydrated);
+  const hydrate     = useAuthStore((state) => state.hydrate);
 
   useEffect(() => {
     void hydrate();
